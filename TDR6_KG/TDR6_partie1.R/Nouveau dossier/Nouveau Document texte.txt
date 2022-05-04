@@ -1,0 +1,12 @@
+iris1[ ,1]   # sélection d'une colonne par son numéro avec [,n]
+iris1[1, ]   # sélection d'une ligne par son numéro avec [n,]
+iris1[1,2]  # sélection d'une case avec [nlig,ncol]
+iris1$SepalLength    # poursuivez les commentaires
+iris1[c(1,5,10), ]
+iris1[-(5:30), ]
+iris1[ ,1:4]
+iris1[c(5,1,10) , c(2,1,4,3)]
+iris1[iris1$Species=="virginica", ] # sélection conditionnelle
+iris1[iris1$SepalLength > 7 , ]
+iris1[iris1$SepalLength < 6  &  iris1$Species=="virginica" , ]
+iris1[(iris1$SepalLength < 6  &  iris1$Species=="virginica") | iris1$Species=="setosa"  , ]
