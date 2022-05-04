@@ -7,45 +7,72 @@
 
 
 ######## EXERCICE  : importez DesIris.txt, testez les scripts et commentez
-
+data(iris)
 # Import
-iris1 <- read.table("DesIris.txt", header=TRUE, dec=".", sep=" ")  
+iris1 <- read.table("DesIris.txt", header=TRUE, dec=".", sep=" ",stringsAsFactors = TRUE) 
+# S?lection dans une table 
+iris1[ ,1]   # s?lection d'une colonne par son num?ro avec [,n]
+iris1[1, ]   # s?lection d'une ligne par son num?ro avec [n,]
+iris1[1,2]  # s?lection d'une case avec [nlig,ncol]
 
-# S�lection dans une table 
-iris1[ ,1]   # s�lection d'une colonne par son num�ro avec [,n]
-iris1[1, ]   # s�lection d'une ligne par son num�ro avec [n,]
-iris1[1,2]  # s�lection d'une case avec [nlig,ncol]
+
+iris1$SepalLength    #sélection de la longueur des sépales des fleurs du tableau iris1
+
+iris1[c(1,5,10), ]  #sélection (des longueurs et largeurs des sépales et 
+des largeurs des pétales et des noms des espèces) présentes aux lignes
+1, 5 et 10 du tableau iris1 
 
 
-iris1$SepalLength    # poursuivez les commentaires
+iris1[-(5:30), ] #sélection (des longueurs et largeurs des sépales et 
+des longueurs et largeurs des pétales et des noms des espèces) pour 
+les colonnes avant la colonne 5 et celles après la colonne 30 du tableau iris1
 
-iris1[c(1,5,10), ]
-iris1[-(5:30), ] #blablablabla
-iris1[ ,1:4]
-iris1[c(1,5,10) , 1:4]
-iris1[iris1$Species=="virginica" , ] # s�lection conditionnelle
-iris1[iris1$SepalLength > 7 , ]
-iris1[iris1$SepalLength < 6  &  iris1$Species=="virginica", ]
+iris1[ ,1:4] #sélection (des longueurs et largeurs des sépales et des longueurs 
+et largeurs des pétales) pour toutes les colonnes du tableau iris1
 
-# S�lection dans un vecteur
-iris1$SepalLength[iris1$Species=="virginica"]
-iris1[iris1$Species=="virginica", ]$SepalLength
+iris1[c(1,5,10) , 1:4] #sélection (des longueurs et largeurs des sépales et 
+des largeurs des pétales) présentes aux lignes 1,5 et 10 sur 
+les colonnes allant 1 à 4 dans le tableau iris1
+
+iris1[iris1$Species=="virginica" , ] #sélection des longueurs et largeurs des
+sépales et pétales) des iris appartenant à l'espèce virginica du tableau iris1
+
+iris1[iris1$SepalLength > 7 , ] #sélection des iris ayant la longueur 
+des sépales supérieure à 7 dans le tableau iris1
+
+
+iris1[iris1$SepalLength < 6  &  iris1$Species=="virginica", ] #sélection 
+des iris ayant la longueur de leurs sépales inférieure à 6 et appartenant 
+à l'epèce Virginica dans le tableau iris1
+
+# S?lection dans un vecteur
+iris1$SepalLength[iris1$Species=="virginica"] #sélection de la longueur
+des sépales des iris de l'espèce virginica dans le tableau iris1 
+
+iris1[iris1$Species=="virginica", ]$SepalLength #sélection des iris appartenant 
+à l'espèce virginica et de la longueur de leurs sépales dans le tableau iris1
+
 
 # Calculs sur des sous-ensembles
 apply(iris1[,1:4], MARGIN=2, mean)
-tapply(iris1$SepalLength, iris1$Species, mean)
+
+
+tapply(iris1$SepalLength, iris1$Species, mean)#sélection des moyennes 
+deslongueurs des sépales des iris par espèce du tableau iris1
 
 
 
 
-######## EXERCICE  : cr�ation du vecteur slv pour "sepal length  virginica" et statistiques
+######## EXERCICE  : cr?ation du vecteur slv pour "sepal length  virginica" et statistiques
 
-# cr�er slv
-slv <- iris1$SepalLength[iris1$Species=="virginica"]
+# cr?er slv
+slv <- iris1$SepalLength[iris1$Species=="virginica"] #création du vecteur 
+donnant la longueur des sépales des iris appartenent à l'espèce virginica 
+dans le tableau iris1 et leurs staistiques
 
 # testez et commentez
-mean(slv)
-var(slv)
+mean(slv, 8)
+var(slv, 2)
 sqrt(var(slv))
 sd(slv)
 min(slv)
@@ -61,7 +88,7 @@ quantile(slv)
 length(slv)
 
 
-######## EXERCICE  : cr�ation de variables
+######## EXERCICE  : cr?ation de variables
 
 # le nom des lignes
 n <- nrow(iris1)           # nrow() : nombre de lignes
@@ -72,7 +99,7 @@ head(noms)
 rapport <- iris1$PetalLength/iris1$PetalWidth  
 head(rapport)
 
-# v�rification des longueurs 
+# v?rification des longueurs 
 length(noms); length(rapport); nrow(iris1)
 
 # ajout
@@ -87,7 +114,7 @@ autre <- 1:3
 iris1$num <- autre
 iris1$num
 
-# Quelle est l'esp�ce pour laquelle les p�tales ont la forme la plus �troite 
+# Quelle est l'esp?ce pour laquelle les p?tales ont la forme la plus ?troite 
 
 
 
