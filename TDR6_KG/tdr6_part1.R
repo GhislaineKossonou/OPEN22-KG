@@ -1,3 +1,18 @@
+n <- nrow(iris1)           # nrow() : nombre de lignes
+noms <- paste("iris", 1:n) # paste() : coller
+head(noms)
+## [1] "iris 1" "iris 2" "iris 3" "iris 4" "iris 5" "iris 6"
+
+rapport <- iris1$PetalLength/iris1$PetalWidth  
+head(rapport)
+## [1] 7.0 4.0 7.5 7.0 8.0 8.0
+
+length(noms); length(rapport); nrow(iris1)
+## [1] 33
+## [1] 33
+## [1] 33
+names(iris1)
+## [1] "SepalLength" "SepalWidth"  "PetalLength" "PetalWidth"  "Species"
 iris1[ ,1]   # sélection d'une colonne par son numéro avec [,n]
 iris1[1, ]   # sélection d'une ligne par son numéro avec [n,]
 iris1[1,2]  # sélection d'une case avec [nlig,ncol]
