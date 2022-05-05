@@ -9,7 +9,9 @@
 ######## EXERCICE  : importez DesIris.txt, testez les scripts et commentez
 data(iris)
 # Import
+
 iris1 <- read.table("DesIris.txt", header=TRUE, dec=".", sep=" ",stringsAsFactors = TRUE) 
+
 # S?lection dans une table 
 iris1[ ,1]   # s?lection d'une colonne par son num?ro avec [,n]
 iris1[1, ]   # s?lection d'une ligne par son num?ro avec [n,]
