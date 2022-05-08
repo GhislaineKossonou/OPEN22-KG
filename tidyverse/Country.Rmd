@@ -5,6 +5,7 @@ date: '2022-05-08'
 output:
   pdf_document: default
   html_document: default
+  word_document: default
 ---
 
 ```{r setup, include=FALSE}
@@ -16,33 +17,67 @@ knitr::opts_chunk$set(echo = TRUE)
 # Importation des packages ####
 library(tidyverse)
 library(readxl)
+install.packages("ggplot2")
 library(ggplot2)
 
 # Importation de données ####
 
-Country1 <- read_excel("Country.xlsx")
-View(Country1)
-names(Country1)
+Country <- read_excel("Country.xlsx")
+Country <- data.frame(Country, 12)
+View(Country)
+names(Country)
 
 # Sélection dans une table ####
 
-Country1$Population
-Country1$Annee
-Country1$Country
+Country$Population
+Country$Annee
+Country$Country
 
-Country1 [-(1:3), ] #sélection des infos du tableau de la ligne 1 #à la ligne 9
+Country [-(1:3), ] #sélection des infos du tableau de la ligne 1 #à la ligne 9
+```
+
+
+
+```{r}
+head(Country, 3)
 ```
 
 ```{r}
-head(Country1, 12)
-h0 <- ggplot2 (Country1,Population)+
-  geom_histogram()
-h0
+head(Country, 12)
+```
+
+
+```{r}
+ggplot (data = Country)
+```
+
+
+```{r}
+head(Country, 12)
+  ggplot(Country) +    
+    geom_histogram(aes(x=Annee))
+      bins = 50
+```
+
+
+
+
+
+```{r graphique}
+
+  ggplot(data = Country) +    
+    geom_histogram(aes(x = Population))
+      bins = 50
 ```
 
 
 
 ```
+
+
+
+
+
 
 
 
