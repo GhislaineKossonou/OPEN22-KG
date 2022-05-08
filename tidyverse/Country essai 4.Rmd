@@ -1,0 +1,23 @@
+---
+title: "country essai 4"
+author: "Ghislaine KOSSONOU"
+date: '2022-05-08'
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+library (tidyverse)
+library(readxl)
+Country <- read_excel("Country.xlsx")
+View(Country)
+
+```{r}
+head(Country, 12)
+```
+
+
+Country1 <-
+
