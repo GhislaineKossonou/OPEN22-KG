@@ -1,0 +1,111 @@
+---
+title: "Country"
+author: "Ghislaine KOSSONOU"
+date: '2022-05-08'
+output:
+  pdf_document: default
+  html_document: default
+  word_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+```{r}
+# Importation des packages ####
+library(tidyverse)
+library(readxl)
+install.packages("ggplot2")
+library(ggplot2)
+
+# Importation et lecture des données ####
+Country <- read_excel("Country.xlsx")
+View(Country)
+names(Country)
+#présentation des données des du tableau Country
+(data = Country)
+```
+
+
+```{r}
+# Sélection dans une table ####
+
+Country [-(1:3), ] #sélection des infos du tableau de la ligne 1 #à la ligne 9
+```
+```{r}
+Country$Population
+Country$Annee
+Country$Ville
+# je ne comprends pas le résultat obtenu. je #cherche à obtenir la population, les années et #les villes dans le tableau Country
+```
+
+
+
+```{r}
+#dans le tableau Country, présentez les 3 premières lignes
+head(Country, 3)
+```
+
+```{r}
+#Afficher toutes les lignes du tableau Country
+head(Country, 12)
+```
+
+
+```{r}
+head(Country, 12)
+  ggplot(data = Country) +    
+    geom_histogram(aes(x=Annee))
+bins = 30
+
+```
+
+
+```{r}
+  ggplot (data = Country) +    
+    geom_histogram(aes(x = Population))
+      bins = 50
+```
+
+
+```{r}
+Villes <- Country$Ville
+  ggplot(Country) +
+    geom_bar (aes(x=Villes))
+      bins = 30
+```
+
+
+```{r}
+Villes <- Country$Ville
+  ggplot(Country) +
+    geom_bar(aes(y = Villes)) +  geom_histogram(aes(x = Population))
+          bins = 30
+```
+
+```{r}
+Villes <- Country$Ville
+  ggplot(Country) +
+    geom_bar(aes(x = Villes)) +  geom_bar(aes(y = Population))
+          bins = 30
+```
+
+#les valeurs de ville ne larche pas avec histogram
+
+```{r}
+Villes <- Country$Ville
+  ggplot(Country) +
+    geom_bar(aes(x = Villes)) +  geom_histogram(aes(y = Annee))
+          bins = 30
+          #diagramme étrange à revoir
+```
+
+
+
+
+
+
+
+
