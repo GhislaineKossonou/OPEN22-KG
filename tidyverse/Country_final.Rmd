@@ -19,7 +19,14 @@ library(tidyverse)
 library(readxl)
 install.packages("ggplot2")
 library(ggplot2)
+```
 
+```{r}
+library(dplyr)
+library(tidyr)
+```
+
+```{r}
 # Importation et lecture des données ####
 Country <- read_excel("Country.xlsx")
 View(Country)
@@ -35,10 +42,10 @@ names(Country)
 Country [-(1:3), ] #sélection des infos du tableau de la ligne 1 #à la ligne 9
 ```
 ```{r}
+# présentation du nombre de lignes comportant les # 3 villes 
 Country$Population
 Country$Annee
 Country$Ville
-# je ne comprends pas le résultat obtenu. je #cherche à obtenir la population, les années et #les villes dans le tableau Country
 ```
 
 
@@ -103,7 +110,46 @@ Villes <- Country$Ville
 ```
 
 
+```{r}
+# "slice" sélectionne les lignes du tableau selon #leurs positions
+slice(Country, 3)
+```
+```{r}
+slice(Country, 1: 6)
+#sélection des 6 premières lignes du tableau
+```
 
+
+```{r}
+slice_tail(Country, n = 4)
+#selection des 4 dernières lignes
+```
+```{r}
+slice_head(Country, n = 7)
+#infos des 7 premières lignes
+```
+```{r}
+filter(Country, Ville == "France")
+```
+
+```{r}
+filter(Country, Ville == "France")
+#choisir les infos des lignes comportant la france
+```
+```{r}
+filter(Country, Annee == "1992" & Ville == "Germany" )
+```
+
+#Pas de moyen de dire que la donnée n'existe pas? 
+
+```{r}
+filter(Country, is.na(Annee == "2022"))
+#filtrer avec une valeur inexitante
+```
+```{r}
+filter(Country, Ville == "Germany" & is.na (Annee == "2021"))
+#tant qu'une valeur n'existe pas dans le tableau, on n'affiche pas"
+```
 
 
 
